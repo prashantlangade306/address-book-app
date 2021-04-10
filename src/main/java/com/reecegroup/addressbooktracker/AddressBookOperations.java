@@ -14,8 +14,7 @@ public interface AddressBookOperations {
   	public void addAddressBook(String name, List<CustomerContact> customerContacts);
   	public void removeAddressBook(String addressBookName) throws NoAddressBookFoundException;
   	
-  //print unique set of all contacts across multiple address books
-    public void printUniqueContacts();
+
 
 	//public void printCustomerContacts(List<CustomerContact> customerContacts);
 }

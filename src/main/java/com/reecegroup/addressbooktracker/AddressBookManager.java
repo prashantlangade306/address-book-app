@@ -58,31 +58,11 @@ public class AddressBookManager implements AddressBookOperations{
 		}
 	}
 
-	@Override
-	public void printUniqueContacts() {
-		Set<CustomerContact> uniqueCustomerContacts = new HashSet<CustomerContact>();
-		for(AddressBook addressBook : addressBooks) {
-			List<CustomerContact> customerContactList = addressBook.getCustomerContacts();
-			if(customerContactList != null) {
-				for(CustomerContact customerContact : customerContactList) {
-					uniqueCustomerContacts.add(customerContact);
-				}
-			}
-		}
-
-		printCustomerContacts(new ArrayList<CustomerContact>(uniqueCustomerContacts));
-
-	}
 
 
 
-	public void printCustomerContacts(List<CustomerContact> customerContacts) {
-		for(CustomerContact customerContact : customerContacts) {
-			System.out.println("Customer Name: "+customerContact.getCustomerName());
-			System.out.println("Customer Phone Number: "+customerContact.getCustomerPhoneNumber());
-		}
 
-	}
+
 
 	@Override
 	public void printAllContactsInAddressBook(String addressBookName) {

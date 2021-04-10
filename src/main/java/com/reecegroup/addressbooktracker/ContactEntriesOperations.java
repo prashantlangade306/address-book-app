@@ -9,4 +9,6 @@ public interface ContactEntriesOperations {
   	//remove existing contact entry
   	public void removeContactEntries(String addressBookName);
 
+	//print unique set of all contacts across multiple address books
+	public void printUniqueContacts();
 }

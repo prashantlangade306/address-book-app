@@ -90,5 +90,34 @@ public class CustomerContactTest {
         assertEquals(expected,outputStreamCaptor.toString().trim());
     }
 
+    @Test
+    @DisplayName("Testing printing of unique customer contacts across multiple address books")
+    public void testPrintUniqueContacts(){
+        String addressBookName = "AddressBook1";
+        List<CustomerContact> customerContacts = new ArrayList<>();
+        customerContacts.add(new CustomerContact("Mark", 1234567));
+        customerContacts.add(new CustomerContact("Travis", 7654321));
+
+        contactEntriesOperations.addNewContactEntries(addressBookName,customerContacts);
+
+        String addressBookName1 = "AddressBook1";
+        List<CustomerContact> customerContacts1 = new ArrayList<>();
+        customerContacts1.add(new CustomerContact("Mark", 1234567));
+        customerContacts1.add(new CustomerContact("Nathan", 7654321));
+        customerContacts.add(new CustomerContact("Travis", 765421));
+
+        contactEntriesOperations.addNewContactEntries(addressBookName1,customerContacts1);
+
+        contactEntriesOperations.printUniqueContacts();
+        String expected = "Customer Name: Nathan\n" +
+                "Customer Phone Number: 7654321\n" +
+                "Customer Name: Travis\n" +
+                "Customer Phone Number: 7654321\n" +
+                "Customer Name: Mark\n" +
+                "Customer Phone Number: 1234567";
+
+        assertEquals(expected,outputStreamCaptor.toString().trim());
+
+    }
 
 }

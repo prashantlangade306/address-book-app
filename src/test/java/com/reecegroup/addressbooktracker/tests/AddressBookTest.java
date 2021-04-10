@@ -33,6 +33,11 @@ public class AddressBookTest {
 
     }
 
+    @After
+    public void tearDown(){
+        AddressBookManager.resetAddressBooks();
+    }
+
     //add address books
     @Test
     @DisplayName("Testing addition of Address Book (Part of address book maintainance)")

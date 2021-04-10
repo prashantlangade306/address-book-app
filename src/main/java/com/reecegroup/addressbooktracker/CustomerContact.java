@@ -18,4 +18,16 @@ public class CustomerContact {
 		return customerPhoneNumber;
 	}
 
+	@Override
+	public boolean equals(Object other) {
+		if (!(other instanceof CustomerContact)) {
+			return false;
+		}
+		return customerName.equals(((CustomerContact)other).customerName);
+	}
+
+	@Override
+	public int hashCode() {
+		return customerName.hashCode();
+	}
 }
