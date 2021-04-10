@@ -72,35 +72,15 @@ public class CustomerContactTest {
     }
 
     @Test
-    @DisplayName("Testing printing of customer contacts - Integration Test")
-    public void testPrintCustomerContacts(){
-        String addressBookName = "AddressBook1";
-        List<CustomerContact> customerContacts = new ArrayList<>();
-        customerContacts.add(new CustomerContact("Mark", 1234567));
-        customerContacts.add(new CustomerContact("Travis", 7654321));
-
-        addressBookOperations.addAddressBook(addressBookName, customerContacts);
-
-        addressBookOperations.printCustomerContacts(customerContacts);
-
-        String expected ="Customer Name: Mark\n" +
-                "Customer Phone Number: 1234567\n" +
-                "Customer Name: Travis\n" +
-                "Customer Phone Number: 7654321";
-
-        assertEquals(expected,outputStreamCaptor.toString().trim());
-    }
-
-    @Test
     @DisplayName("Testing printing of all customer contacts for a address book")
-    public void testPrintAllContacts(){
+    public void testprintAllContactsInAddressBook(){
         String addressBookName = "AddressBook1";
         List<CustomerContact> customerContacts = new ArrayList<>();
         customerContacts.add(new CustomerContact("Mark", 1234567));
         customerContacts.add(new CustomerContact("Travis", 7654321));
         addressBookOperations.addAddressBook("AddressBook1", customerContacts);
 
-        addressBookOperations.printAllContacts(addressBookName);
+        addressBookOperations.printAllContactsInAddressBook(addressBookName);
 
         String expected = "Customer Contact Name: Mark\n" +
                 "Customer Contact Phone Number: 1234567\n" +

@@ -46,13 +46,16 @@ public class AddressBookManager implements AddressBookOperations{
 	}
 
 	@Override
-	public void removeAddressBook(AddressBook addressBook) {
+	public void removeAddressBook(String addressBookName) {
 		if(addressBooks != null) {
-			addressBooks.remove(addressBook);
-		} else {
-
+			for (Iterator<AddressBook> it = addressBooks.iterator(); it.hasNext(); ) {
+				AddressBook addressBook = it.next();
+				if (addressBook.getAddressBookName().equals(addressBookName)) {
+					addressBook.removeCustomerContacts();
+					it.remove();
+				}
+			}
 		}
-
 	}
 
 	@Override
@@ -73,7 +76,6 @@ public class AddressBookManager implements AddressBookOperations{
 
 
 
-	@Override
 	public void printCustomerContacts(List<CustomerContact> customerContacts) {
 		for(CustomerContact customerContact : customerContacts) {
 			System.out.println("Customer Name: "+customerContact.getCustomerName());
@@ -83,7 +85,7 @@ public class AddressBookManager implements AddressBookOperations{
 	}
 
 	@Override
-	public void printAllContacts(String addressBookName) {
+	public void printAllContactsInAddressBook(String addressBookName) {
 		if(addressBooks != null) {
 			for(AddressBook addressBook : addressBooks) {
 				if(addressBook.getAddressBookName().equals(addressBookName)){
