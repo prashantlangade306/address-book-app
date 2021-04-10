@@ -46,23 +46,24 @@ public class AddressBookManager implements AddressBookOperations{
 	}
 
 	@Override
-	public void removeAddressBook(String addressBookName) {
+	public void removeAddressBook(String addressBookName) throws NoAddressBookFoundException {
+		boolean isAddressBookRemoved = false;
 		if(addressBooks != null) {
 			for (Iterator<AddressBook> it = addressBooks.iterator(); it.hasNext(); ) {
 				AddressBook addressBook = it.next();
 				if (addressBook.getAddressBookName().equals(addressBookName)) {
 					addressBook.removeCustomerContacts();
 					it.remove();
+					isAddressBookRemoved = true;
 				}
 			}
 		}
+
+		if(!isAddressBookRemoved){
+			throw new NoAddressBookFoundException("No Address Book found with name: "+addressBookName+" to remove.");
+		}
+
 	}
-
-
-
-
-
-
 
 	@Override
 	public void printAllContactsInAddressBook(String addressBookName) {

@@ -5,32 +5,23 @@ import com.reecegroup.addressbooktracker.AddressBookManager;
 import com.reecegroup.addressbooktracker.AddressBookOperations;
 import com.reecegroup.addressbooktracker.CustomerContact;
 import com.reecegroup.addressbooktracker.exception.NoAddressBookFoundException;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.reecegroup.addressbooktracker.*;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AddressBookTest {
 
     private AddressBookOperations addressBookOperations = null;
+
     @Before
     public void setUp(){
         addressBookOperations = new AddressBookManager();
-
     }
 
     @After
@@ -64,11 +55,9 @@ public class AddressBookTest {
         assertEquals("Trait",AddressBook.getCustomerContacts().get(1).getCustomerName());
     }
 
-    //remove address books
-    @Test
+    @Test(expected = NoAddressBookFoundException.class)
     @DisplayName("Testing removal of Address Book (Part of address book maintainance) ")
     public void testRemoveAddressBook() throws NoAddressBookFoundException {
-        //AddressBook
         List<CustomerContact> customerContactList = new ArrayList<>();
         customerContactList.add(new CustomerContact("Henry", 123456));
         customerContactList.add(new CustomerContact("Ben", 6342651));
@@ -80,6 +69,8 @@ public class AddressBookTest {
         assertEquals(0, addressBookList.size());
         assertEquals(0, AddressBook.getCustomerContacts().size());
 
+        //Additional method call to test NoAddressBookFoundException
+        addressBookOperations.removeAddressBook("AddressBook1");
     }
 
 }
