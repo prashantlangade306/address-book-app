@@ -1,101 +1,102 @@
 package com.reecegroup.addressbooktracker;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import com.reecegroup.addressbooktracker.exception.NoAddressBookFoundException;
 
-public class AddressBookManager {
+import java.util.*;
+
+public class AddressBookManager implements AddressBookOperations{
 	
 	private AddressBookOperations addressBookOperations;
-	private static ContactEntriesOperations contactEntriesOperations = new BranchManager();
-	
-	 public static void performOperations(String option) {
-		 
-		 Scanner reader = new Scanner(System.in);
-	     String input = null;
-	     String[] multilineInput = null;
-	     
-		 switch (option) {
-	  
-			  case "1": {
-				  //Take list of customer contacts from user input in the form of values separated by ,
-				  System.out.println("Please enter ");
-				  //contactEntriesOperations.printCustomerContacts(customerContactsList);
-				  break; 
-			  }
-			  
-			  case "2": { 
-				  System.out.println("Enter the address book name.");
-				  input = reader.nextLine();
-				  System.out.println("Enter the number of contact entries to be added for a address book.");
-				  multilineInput = new String [reader.nextInt()];   
-				  System.out.println("Please enter user input in the form of Customer Name, Customer Phone Number. e.g. Prashant, 12345678");
-				  reader.nextLine(); 
-				  
-				  List<CustomerContact> customerContacts = new ArrayList<CustomerContact>();
-				  for (int i = 0; i < multilineInput.length; i++)   
-				  {  
-					  multilineInput[i] = reader.nextLine();
-					  String[] splitVal = multilineInput[i].split(",");
-					  customerContacts.add(new CustomerContact(splitVal[0], Long.valueOf(splitVal[1])));
-					   
-				  }
-				  
-				  contactEntriesOperations.addNewContactEntries(input, customerContacts);
-				  break; 
+	private static ContactEntriesOperations contactEntriesOperations = new CustomerContactManager();
+
+	public static void setAddressBooks(List<AddressBook> addressBooks) {
+		addressBooks.addAll(addressBooks);
+	}
+
+	static List<AddressBook> addressBooks;
+	public static List<AddressBook> getAddressBooks() {
+		return addressBooks;
+	}
+
+	public static void resetAddressBooks() {
+		addressBooks  = null;
+	}
+
+
+
+	@Override
+	public void printAllAddressBooks() {
+		for(AddressBook addressBook : addressBooks) {
+			System.out.println("Address Book Name: "+addressBook.getAddressBookName());
+		}
+
+	}
+
+	@Override
+	public void addAddressBook(String name, List<CustomerContact> customerContacts) {
+		AddressBook addressBook = new AddressBook.Builder(name)
+				.withCustomerContacts(customerContacts)
+				.build();
+		if(addressBooks != null) {
+			addressBooks.add(addressBook);
+		} else {
+			addressBooks = new ArrayList<AddressBook>();
+			addressBooks.add(addressBook);
+		}
+	}
+
+	@Override
+	public void removeAddressBook(AddressBook addressBook) {
+		if(addressBooks != null) {
+			addressBooks.remove(addressBook);
+		} else {
+
+		}
+
+	}
+
+	@Override
+	public void printUniqueContacts() {
+		Set<CustomerContact> uniqueCustomerContacts = new HashSet<CustomerContact>();
+		for(AddressBook addressBook : addressBooks) {
+			List<CustomerContact> customerContactList = addressBook.getCustomerContacts();
+			if(customerContactList != null) {
+				for(CustomerContact customerContact : customerContactList) {
+					uniqueCustomerContacts.add(customerContact);
 				}
-			  
-		 
-			 case "3": {
-				
-				 //For testing purpose - start
-				 System.out.println("Enter the address book name.");
-				  input = reader.nextLine();
-				  System.out.println("Enter the number of contact entries to be added for a address book.");
-				  multilineInput = new String [reader.nextInt()];   
-				  System.out.println("Please enter user input in the form of Customer Name, Customer Phone Number. e.g. Prashant, 12345678");
-				  reader.nextLine(); 
-				  
-				  List<CustomerContact> customerContacts = new ArrayList<CustomerContact>();
-				  for (int i = 0; i < multilineInput.length; i++)   
-				  {  
-					  multilineInput[i] = reader.nextLine();
-					  String[] splitVal = multilineInput[i].split(",");
-					  customerContacts.add(new CustomerContact(splitVal[0], Long.valueOf(splitVal[1])));
-					   
-				  }
-				  
-				  contactEntriesOperations.addNewContactEntries(input, customerContacts); 
-				//For testing purpose - end
-				 
-				 contactEntriesOperations.removeContactEntries(input);
-				 break;
-			 }
-			 
-			 case "4": {
-				 
-				 AddressBook addressBook1 = new AddressBook.Builder("Address1")
-						 					.withCustomerContacts(new ArrayList<CustomerContact>())
-						 					.build();
-				 
-				 //addressBookOperations.printAllContacts(addressBook);
-				 break;
-			 }
-			 
-			 case "5": {
-				 //addressBookOperations.printAllAddressBooks();
-				 break;
-			 }
-			 
-			 case "6": {
-				 //addressBookOperations.addAddressBook(name, customerContacts);
-				 break;
-			 }
-			 
-			 case "7": {
-				 //addressBookOperations.removeAddressBook(addressBook);
-				 break;
-			 }	 
-		 }
-	 }
+			}
+		}
+
+		printCustomerContacts(new ArrayList<CustomerContact>(uniqueCustomerContacts));
+
+	}
+
+
+
+	@Override
+	public void printCustomerContacts(List<CustomerContact> customerContacts) {
+		for(CustomerContact customerContact : customerContacts) {
+			System.out.println("Customer Name: "+customerContact.getCustomerName());
+			System.out.println("Customer Phone Number: "+customerContact.getCustomerPhoneNumber());
+		}
+
+	}
+
+	@Override
+	public void printAllContacts(String addressBookName) {
+		if(addressBooks != null) {
+			for(AddressBook addressBook : addressBooks) {
+				if(addressBook.getAddressBookName().equals(addressBookName)){
+					List<CustomerContact> customerContactList = addressBook.getCustomerContacts();
+
+					if(customerContactList != null) {
+						for(CustomerContact customerContact : customerContactList) {
+							System.out.println("Customer Contact Name: "+customerContact.getCustomerName());
+							System.out.println("Customer Contact Phone Number: "+customerContact.getCustomerPhoneNumber());
+						}
+					}
+				}
+			}
+		}
+	}
 }

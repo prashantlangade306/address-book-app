@@ -23,14 +23,14 @@ public class CustomerContactTest {
 
     @Before
     public void setUp() {
-        contactEntriesOperations = new BranchManager();
-        addressBookOperations = new BranchManager();
+        contactEntriesOperations = new CustomerContactManager();
+        addressBookOperations = new AddressBookManager();
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     @After
     public void tearDown(){
-        BranchManager.resetAddressBooks();
+        AddressBookManager.resetAddressBooks();
     }
     @Test
     @DisplayName("Testing addition of new contact entries")
@@ -43,10 +43,10 @@ public class CustomerContactTest {
         contactEntriesOperations.addNewContactEntries(addressBookName,customerContacts);
 
         assertEquals(2, customerContacts.size());
-        assertEquals(1, BranchManager.getAddressBooks().size());
-        assertEquals(customerContacts, BranchManager.getCustomerContactsForAddressBookName(addressBookName));
+        assertEquals(1, CustomerContactManager.getAddressBooks().size());
+        assertEquals(customerContacts, CustomerContactManager.getCustomerContactsForAddressBookName(addressBookName));
 
-        List<CustomerContact> customerContactList = BranchManager.getCustomerContactsForAddressBookName(addressBookName);
+        List<CustomerContact> customerContactList = CustomerContactManager.getCustomerContactsForAddressBookName(addressBookName);
         assertEquals("Mark", customerContactList.get(0).getCustomerName());
         assertEquals("Travis", customerContactList.get(1).getCustomerName());
 
@@ -65,10 +65,10 @@ public class CustomerContactTest {
         addressBookOperations.addAddressBook(addressBookName, customerContacts);
         contactEntriesOperations.removeContactEntries(addressBookName);
 
-        assertTrue(BranchManager.doesAddressBookExists(addressBookName));
+        assertTrue(CustomerContactManager.doesAddressBookExists(addressBookName));
         assertEquals(0, AddressBook.getCustomerContacts().size());
-        assertEquals(1, BranchManager.getAddressBooks().size());
-        assertEquals(0, BranchManager.getCustomerContactsForAddressBookName(addressBookName).size());
+        assertEquals(1, AddressBookManager.getAddressBooks().size());
+        assertEquals(0, CustomerContactManager.getCustomerContactsForAddressBookName(addressBookName).size());
     }
 
     @Test
@@ -81,7 +81,7 @@ public class CustomerContactTest {
 
         addressBookOperations.addAddressBook(addressBookName, customerContacts);
 
-        contactEntriesOperations.printCustomerContacts(customerContacts);
+        addressBookOperations.printCustomerContacts(customerContacts);
 
         String expected ="Customer Name: Mark\n" +
                 "Customer Phone Number: 1234567\n" +

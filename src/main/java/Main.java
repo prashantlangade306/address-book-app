@@ -15,7 +15,7 @@ public class Main {
         Scanner reader = new Scanner(System.in);
         String option = reader.nextLine();
 
-        AddressBookManager.performOperations(option);
+        //AddressBookManager.performOperations(option);
     }
 
 }
