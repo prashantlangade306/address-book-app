@@ -8,7 +8,7 @@ This is an application that covers all functionalities as part of acceptance cri
 * [Technology Stack](#technology-stack)
 * [Code Structure](#code-structure)
 * [Significance](#significance)
-* [Testcases Covered] (#testcases-covered)
+* [Testcases] (#testcases)
 * [License and Copyright](#license-and-copyright)
 
 ## User Story and Acceptance Criteria
@@ -63,7 +63,7 @@ com/reecegroup/addressbooktracker/CustomerContactEntriesOperations : Interface f
 com/reecegroup/addressbooktracker/tests/AddressBookTest : Class used for testing Address Book related acceptance criteria's.
 com/reecegroup/addressbooktracker/tests/CustomerContactTest : Class used for testing Customer Contact related acceptance criteria's.
 
-## Testcases Covered
+## Testcases
 
 com/reecegroup/addressbooktracker/tests/AddressBookTest :
 
@@ -76,7 +76,6 @@ testAddNewCustomerContactEntries() : Testing addition of new contact entries
 testRemoveCustomerContactEntries() : Testing removal of contact entries - Integration test
 testprintAllCustomerContactsInAddressBook() : Testing printing of all customer contacts for a address book
 testPrintUniqueCustomerContacts() : Testing printing of unique customer contacts across multiple address books
-
 
 ## License & Copyright
 Prashant Langade
