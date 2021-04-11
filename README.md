@@ -13,13 +13,13 @@ This is an application that covers all functionalities as part of acceptance cri
 
 ## User Story and Acceptance Criteria
 
-* User Story:
+User Story:
 
 As a Reece Branch Manager
 I would like an address book application
 So that I can keep track of my customer contacts
 
-* Acceptance Criteria:
+Acceptance Criteria:
 
 * Address book will hold name and phone numbers of contact entries
 * Users should be able to add new contact entries
