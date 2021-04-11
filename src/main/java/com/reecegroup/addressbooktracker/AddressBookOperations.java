@@ -1,5 +1,6 @@
 package com.reecegroup.addressbooktracker;
 
+import com.reecegroup.addressbooktracker.entity.CustomerContact;
 import com.reecegroup.addressbooktracker.exception.NoAddressBookFoundException;
 
 import java.util.List;

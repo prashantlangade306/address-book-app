@@ -1,6 +1,10 @@
 package com.reecegroup.addressbooktracker.tests;
 
 import com.reecegroup.addressbooktracker.*;
+import com.reecegroup.addressbooktracker.entity.AddressBook;
+import com.reecegroup.addressbooktracker.entity.CustomerContact;
+import com.reecegroup.addressbooktracker.manager.AddressBookManager;
+import com.reecegroup.addressbooktracker.manager.CustomerContactManager;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

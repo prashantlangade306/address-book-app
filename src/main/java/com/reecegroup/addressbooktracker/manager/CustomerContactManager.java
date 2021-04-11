@@ -1,4 +1,8 @@
-package com.reecegroup.addressbooktracker;
+package com.reecegroup.addressbooktracker.manager;
+
+import com.reecegroup.addressbooktracker.CustomerContactEntriesOperations;
+import com.reecegroup.addressbooktracker.entity.AddressBook;
+import com.reecegroup.addressbooktracker.entity.CustomerContact;
 
 import java.util.ArrayList;
 import java.util.HashSet;

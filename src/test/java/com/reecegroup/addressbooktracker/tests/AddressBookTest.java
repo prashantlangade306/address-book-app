@@ -1,9 +1,9 @@
 package com.reecegroup.addressbooktracker.tests;
 
-import com.reecegroup.addressbooktracker.AddressBook;
-import com.reecegroup.addressbooktracker.AddressBookManager;
+import com.reecegroup.addressbooktracker.entity.AddressBook;
+import com.reecegroup.addressbooktracker.manager.AddressBookManager;
 import com.reecegroup.addressbooktracker.AddressBookOperations;
-import com.reecegroup.addressbooktracker.CustomerContact;
+import com.reecegroup.addressbooktracker.entity.CustomerContact;
 import com.reecegroup.addressbooktracker.exception.NoAddressBookFoundException;
 import org.junit.*;
 

@@ -1,5 +1,7 @@
 package com.reecegroup.addressbooktracker;
 
+import com.reecegroup.addressbooktracker.entity.CustomerContact;
+
 import java.util.List;
 
 /**
