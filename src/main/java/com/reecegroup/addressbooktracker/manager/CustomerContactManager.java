@@ -12,8 +12,11 @@ import java.util.Set;
 /**
  * Class used for implementation of various Customer Contact related use cases.
  * e.g.
+ * 1. Adding a new Customer Contact which contains name and associated customer contacts.
+ * 2. Removing a pre-existing Customer Contacts for a address book based on its name.
+ * 3. Printing unique Customer Contact names across multiple address books.
  *
- *
+ *  Additionally, it also contains helper methods to unit testing purpose.
  */
 public class CustomerContactManager implements CustomerContactEntriesOperations {
 
@@ -130,6 +133,11 @@ public class CustomerContactManager implements CustomerContactEntriesOperations 
         printCustomerContacts(new ArrayList<CustomerContact>(uniqueCustomerContacts));
     }
 
+    /**
+     * Method used for printing customer contact details such as name and phone number.
+     *
+     * @param customerContacts
+     */
     public void printCustomerContacts(List<CustomerContact> customerContacts) {
         for(CustomerContact customerContact : customerContacts) {
             System.out.println("Customer Name: "+customerContact.getCustomerName());

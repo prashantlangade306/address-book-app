@@ -17,6 +17,10 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class used for testing Customer Contact related acceptance criteria's.
+ *
+ */
 public class CustomerContactTest {
 
     private CustomerContactEntriesOperations customerContactEntriesOperations = null;
@@ -24,6 +28,9 @@ public class CustomerContactTest {
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
+    /**
+     * Method to pre-initialise required objects.
+     */
     @Before
     public void setUp() {
         customerContactEntriesOperations = new CustomerContactManager();
@@ -31,10 +38,17 @@ public class CustomerContactTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
+    /**
+     * Method to clear remove objects from the memory.
+     */
     @After
     public void tearDown(){
         AddressBookManager.resetAddressBooks();
     }
+
+    /**
+     * Method to test addition of new contact entries.
+     */
     @Test
     @DisplayName("Testing addition of new contact entries")
     public void testAddNewCustomerContactEntries() {
@@ -57,6 +71,9 @@ public class CustomerContactTest {
         assertEquals(7654321,customerContactList.get(1).getCustomerPhoneNumber());
     }
 
+    /**
+     * Method to test removal of new contact entries.
+     */
     @Test
     @DisplayName("Testing removal of contact entries - Integration test")
     public void testRemoveCustomerContactEntries() {
@@ -74,6 +91,9 @@ public class CustomerContactTest {
         assertEquals(0, CustomerContactManager.getCustomerContactsForAddressBookName(addressBookName).size());
     }
 
+    /**
+     * Method to print all customer contact entries for a address book.
+     */
     @Test
     @DisplayName("Testing printing of all customer contacts for a address book")
     public void testprintAllCustomerContactsInAddressBook(){
@@ -93,6 +113,9 @@ public class CustomerContactTest {
         assertEquals(expected,outputStreamCaptor.toString().trim());
     }
 
+    /**
+     * Method to test printing of unique customer contacts across multiple address books.
+     */
     @Test
     @DisplayName("Testing printing of unique customer contacts across multiple address books")
     public void testPrintUniqueCustomerContacts(){

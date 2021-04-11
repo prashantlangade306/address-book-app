@@ -15,20 +15,33 @@ import org.junit.jupiter.api.DisplayName;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Class used for testing Address Book related acceptance criteria's.
+ *
+ */
 public class AddressBookTest {
 
     private AddressBookOperations addressBookOperations = null;
 
+    /**
+     * Method to pre-initialise required objects.
+     */
     @Before
     public void setUp(){
         addressBookOperations = new AddressBookManager();
     }
 
+    /**
+     * Method to clear remove objects from the memory.
+     */
     @After
     public void tearDown(){
         AddressBookManager.resetAddressBooks();
     }
 
+    /**
+     * Testcase to test addition of address book
+     */
     @Test
     @DisplayName("Testing addition of Address Book (Part of address book maintainance)")
     public void testAddAddressBook(){
@@ -54,6 +67,10 @@ public class AddressBookTest {
         assertEquals("Trait",AddressBook.getCustomerContacts().get(1).getCustomerName());
     }
 
+    /**
+     * Testcase to test removal of address book and exception thrown by the method.
+     * @throws NoAddressBookFoundException
+     */
     @Test(expected = NoAddressBookFoundException.class)
     @DisplayName("Testing removal of Address Book (Part of address book maintainance) ")
     public void testRemoveAddressBook() throws NoAddressBookFoundException {
