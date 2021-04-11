@@ -3,8 +3,15 @@
 This is an application that covers all functionalities as part of acceptance criteria for a Address Book application used by Reece Group branch manager.
 
 [Table Of Contents]()
+* [User Story and Acceptance Criteria](#user-story-and-acceptance-criteria)
+* [Key Information](#key-information)
+* [Technology Stack](#technology-stack)
+* [Code Structure](#code-structure)
+* [Significance](#significance)
+* [TestCases Covered] (#testcases-covered)
+* [License and Copyright](#license-and-copyright)
 
-1 [User Story and Acceptance Criteria]()
+## User Story and Acceptance Criteria
 
 User Story:
 
@@ -21,17 +28,18 @@ o Users should be able to print all contacts in an address book
 o Users should be able to maintain multiple address books
 o Users should be able to print a unique set of all contacts across multiple address books
 
-2. [Key Information]()
+## Key Information
 
 a. This README.md file has all the necessary information to understand the approach taken to develop the user story although the code is well documented.
 b. The application does not take any user input
 c. Application functionalities can be tested using the junit testcases (unit/integration)
 d. Application covers only the acceptance criteria defined for the user story.
 
-3. [Technology Stack]()
+## Technology Stack
+
    The application is a maven based java application with junit dependency developed using Intellij IDE.
    
-4. [Code Structure]()
+## Code Structure
    
 com/reecegroup/addressbooktracker/entity/AddressBook
 com/reecegroup/addressbooktracker/entity/CustomerContact
@@ -43,7 +51,7 @@ com/reecegroup/addressbooktracker/CustomerContactEntriesOperations
 com/reecegroup/addressbooktracker/tests/AddressBookTest
 com/reecegroup/addressbooktracker/tests/CustomerContactTest
 
-5. [Significance]()
+## Significance
 
 com/reecegroup/addressbooktracker/entity/AddressBook : Class to hold Address Book information such as name and associated customer contacts.
 com/reecegroup/addressbooktracker/entity/CustomerContact : Class to holder Customer Contact information associated with a Address Book such as name and phone number.
@@ -55,7 +63,7 @@ com/reecegroup/addressbooktracker/CustomerContactEntriesOperations : Interface f
 com/reecegroup/addressbooktracker/tests/AddressBookTest : Class used for testing Address Book related acceptance criteria's.
 com/reecegroup/addressbooktracker/tests/CustomerContactTest : Class used for testing Customer Contact related acceptance criteria's.
 
-6. [TestCases Covered]()
+## TestCases Covered
 
 com/reecegroup/addressbooktracker/tests/AddressBookTest :
 
@@ -70,3 +78,5 @@ testprintAllCustomerContactsInAddressBook() : Testing printing of all customer c
 testPrintUniqueCustomerContacts() : Testing printing of unique customer contacts across multiple address books
 
 
+## License & Copyright
+Prashant Langade
