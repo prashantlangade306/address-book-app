@@ -8,7 +8,7 @@ This is an application that covers all functionalities as part of acceptance cri
 * [Technology Stack](#technology-stack)
 * [Code Structure](#code-structure)
 * [Significance](#significance)
-* [Testcases] (#testcases)
+* [Testcases](#testcases)
 * [License and Copyright](#license-and-copyright)
 
 ## User Story and Acceptance Criteria
