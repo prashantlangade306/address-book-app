@@ -15,14 +15,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class CustomerContactTest {
 
-    private ContactEntriesOperations contactEntriesOperations = null;
+    private CustomerContactEntriesOperations customerContactEntriesOperations = null;
     private AddressBookOperations addressBookOperations = null;
     private final PrintStream standardOut = System.out;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     @Before
     public void setUp() {
-        contactEntriesOperations = new CustomerContactManager();
+        customerContactEntriesOperations = new CustomerContactManager();
         addressBookOperations = new AddressBookManager();
         System.setOut(new PrintStream(outputStreamCaptor));
     }
@@ -33,13 +33,13 @@ public class CustomerContactTest {
     }
     @Test
     @DisplayName("Testing addition of new contact entries")
-    public void testAddNewContactEntries() {
+    public void testAddNewCustomerContactEntries() {
         String addressBookName = "AddressBook1";
         List<CustomerContact> customerContacts = new ArrayList<>();
         customerContacts.add(new CustomerContact("Mark", 1234567));
         customerContacts.add(new CustomerContact("Travis", 7654321));
 
-        contactEntriesOperations.addNewContactEntries(addressBookName,customerContacts);
+        customerContactEntriesOperations.addNewCustomerContactEntries(addressBookName,customerContacts);
 
         assertEquals(2, customerContacts.size());
         assertEquals(1, CustomerContactManager.getAddressBooks().size());
@@ -55,14 +55,14 @@ public class CustomerContactTest {
 
     @Test
     @DisplayName("Testing removal of contact entries - Integration test")
-    public void testRemoveContactEntries() {
+    public void testRemoveCustomerContactEntries() {
         String addressBookName = "AddressBook1";
         List<CustomerContact> customerContacts = new ArrayList<>();
         customerContacts.add(new CustomerContact("Mark", 1234567));
         customerContacts.add(new CustomerContact("Travis", 7654321));
 
         addressBookOperations.addAddressBook(addressBookName, customerContacts);
-        contactEntriesOperations.removeContactEntries(addressBookName);
+        customerContactEntriesOperations.removeCustomerContactEntries(addressBookName);
 
         assertTrue(CustomerContactManager.doesAddressBookExists(addressBookName));
         assertEquals(0, AddressBook.getCustomerContacts().size());
@@ -72,7 +72,7 @@ public class CustomerContactTest {
 
     @Test
     @DisplayName("Testing printing of all customer contacts for a address book")
-    public void testprintAllContactsInAddressBook(){
+    public void testprintAllCustomerContactsInAddressBook(){
         String addressBookName = "AddressBook1";
         List<CustomerContact> customerContacts = new ArrayList<>();
         customerContacts.add(new CustomerContact("Mark", 1234567));
@@ -91,13 +91,13 @@ public class CustomerContactTest {
 
     @Test
     @DisplayName("Testing printing of unique customer contacts across multiple address books")
-    public void testPrintUniqueContacts(){
+    public void testPrintUniqueCustomerContacts(){
         String addressBookName = "AddressBook1";
         List<CustomerContact> customerContacts = new ArrayList<>();
         customerContacts.add(new CustomerContact("Mark", 1234567));
         customerContacts.add(new CustomerContact("Travis", 7654321));
 
-        contactEntriesOperations.addNewContactEntries(addressBookName,customerContacts);
+        customerContactEntriesOperations.addNewCustomerContactEntries(addressBookName,customerContacts);
 
         String addressBookName1 = "AddressBook1";
         List<CustomerContact> customerContacts1 = new ArrayList<>();
@@ -105,9 +105,9 @@ public class CustomerContactTest {
         customerContacts1.add(new CustomerContact("Nathan", 7654321));
         customerContacts.add(new CustomerContact("Travis", 765421));
 
-        contactEntriesOperations.addNewContactEntries(addressBookName1,customerContacts1);
+        customerContactEntriesOperations.addNewCustomerContactEntries(addressBookName1,customerContacts1);
 
-        contactEntriesOperations.printUniqueContacts();
+        customerContactEntriesOperations.printUniqueCustomerContacts();
         String expected = "Customer Name: Nathan\n" +
                 "Customer Phone Number: 7654321\n" +
                 "Customer Name: Travis\n" +
@@ -116,7 +116,6 @@ public class CustomerContactTest {
                 "Customer Phone Number: 1234567";
 
         assertEquals(expected,outputStreamCaptor.toString().trim());
-
     }
 
 }

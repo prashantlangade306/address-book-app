@@ -1,5 +1,8 @@
 package com.reecegroup.addressbooktracker;
 
+/**
+ * Class to holder Customer Contact information associated with a Address Book such as name and phone number.
+ */
 public class CustomerContact {
 	
 	private String customerName;

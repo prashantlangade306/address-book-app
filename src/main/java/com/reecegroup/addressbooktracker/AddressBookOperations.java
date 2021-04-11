@@ -4,17 +4,14 @@ import com.reecegroup.addressbooktracker.exception.NoAddressBookFoundException;
 
 import java.util.List;
 
+/**
+ * Interface for Address Book related operations.
+ */
 public interface AddressBookOperations {
 
-	//print all contacts in an address book
-  	public void printAllContactsInAddressBook(String addressBookName);
-  	
-  //maintain multiple address book - view/print, add, remove
-  	public void printAllAddressBooks();
-  	public void addAddressBook(String name, List<CustomerContact> customerContacts);
-  	public void removeAddressBook(String addressBookName) throws NoAddressBookFoundException;
-  	
+	void printAllContactsInAddressBook(String addressBookName);
+  	//maintain multiple address book - add, remove
+  	void addAddressBook(String name, List<CustomerContact> customerContacts);
+  	void removeAddressBook(String addressBookName) throws NoAddressBookFoundException;
 
-
-	//public void printCustomerContacts(List<CustomerContact> customerContacts);
 }
