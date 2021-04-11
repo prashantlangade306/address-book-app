@@ -67,15 +67,15 @@ com/reecegroup/addressbooktracker/tests/CustomerContactTest
 
 com/reecegroup/addressbooktracker/tests/AddressBookTest :
 
-testAddAddressBook() : Testing addition of Address Book (Part of address book maintainance)
-testRemoveAddressBook() : esting removal of Address Book (Part of address book maintainance)
+* testAddAddressBook() : Testing addition of Address Book (Part of address book maintainance)
+* testRemoveAddressBook() : esting removal of Address Book (Part of address book maintainance)
 
 com/reecegroup/addressbooktracker/tests/CustomerContactTest  :
 
-testAddNewCustomerContactEntries() : Testing addition of new contact entries
-testRemoveCustomerContactEntries() : Testing removal of contact entries - Integration test
-testprintAllCustomerContactsInAddressBook() : Testing printing of all customer contacts for a address book
-testPrintUniqueCustomerContacts() : Testing printing of unique customer contacts across multiple address books
+* testAddNewCustomerContactEntries() : Testing addition of new contact entries
+* testRemoveCustomerContactEntries() : Testing removal of contact entries - Integration test
+* testprintAllCustomerContactsInAddressBook() : Testing printing of all customer contacts for a address book
+* testPrintUniqueCustomerContacts() : Testing printing of unique customer contacts across multiple address books
 
 ## License & Copyright
 Prashant Langade
