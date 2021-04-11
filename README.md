@@ -33,3 +33,40 @@ d. Application covers only the acceptance criteria defined for the user story.
    
 4. [Code Structure]()
    
+com/reecegroup/addressbooktracker/entity/AddressBook
+com/reecegroup/addressbooktracker/entity/CustomerContact
+com/reecegroup/addressbooktracker/exception/NoAddressBookFoundException
+com/reecegroup/addressbooktracker/manager/AddressBookManager
+com/reecegroup/addressbooktracker/manager/CustomerContactManager
+com/reecegroup/addressbooktracker/AddressBookOperations
+com/reecegroup/addressbooktracker/CustomerContactEntriesOperations
+com/reecegroup/addressbooktracker/tests/AddressBookTest
+com/reecegroup/addressbooktracker/tests/CustomerContactTest
+
+5. [Significance]()
+
+com/reecegroup/addressbooktracker/entity/AddressBook : Class to hold Address Book information such as name and associated customer contacts.
+com/reecegroup/addressbooktracker/entity/CustomerContact : Class to holder Customer Contact information associated with a Address Book such as name and phone number.
+com/reecegroup/addressbooktracker/exception/NoAddressBookFoundException : Exception handler class to handle no address book found scenario and is thrown while user trying to remove non-existent address book
+com/reecegroup/addressbooktracker/manager/AddressBookManager : Class used for implementation of various Address Book related use cases.
+com/reecegroup/addressbooktracker/manager/CustomerContactManager : Class used for implementation of various Customer Contact related use cases.
+com/reecegroup/addressbooktracker/AddressBookOperations : Interface for Address Book related operations.
+com/reecegroup/addressbooktracker/CustomerContactEntriesOperations : Interface for Contract entries related operations.
+com/reecegroup/addressbooktracker/tests/AddressBookTest : Class used for testing Address Book related acceptance criteria's.
+com/reecegroup/addressbooktracker/tests/CustomerContactTest : Class used for testing Customer Contact related acceptance criteria's.
+
+6. [TestCases Covered]()
+
+com/reecegroup/addressbooktracker/tests/AddressBookTest :
+
+testAddAddressBook() : Testing addition of Address Book (Part of address book maintainance)
+testRemoveAddressBook() : esting removal of Address Book (Part of address book maintainance)
+
+com/reecegroup/addressbooktracker/tests/CustomerContactTest  :
+
+testAddNewCustomerContactEntries() : Testing addition of new contact entries
+testRemoveCustomerContactEntries() : Testing removal of contact entries - Integration test
+testprintAllCustomerContactsInAddressBook() : Testing printing of all customer contacts for a address book
+testPrintUniqueCustomerContacts() : Testing printing of unique customer contacts across multiple address books
+
+
